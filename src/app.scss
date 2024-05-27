@@ -23,4 +23,40 @@ h1, h2, h3, h4, h5, h6 {
 
 a { color: inherit; }
 
+.container {
+  width: 100%;
+  padding: 35px 20px;
+}
 
+.diary {
+  background: var(--bg-light);
+  border-radius: 1rem;
+  margin-bottom: 15px;
+  padding: 1rem 15px;
+  
+  .content {
+    margin-bottom: 30px;
+  }
+
+  .bottom-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .date { 
+      font-size: 14px;
+      color: var(--text-mid); 
+    }
+  }
+  
+  .btn {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+  }
+}
+
+.diary {
+  cursor: pointer;
+  display: block;
+  text-decoration: none;
+}

@@ -5,12 +5,12 @@
   $: console.log('page', $page.url.pathname);
 
   function clickHandler() {
-    if ($page.url.pathname === '/read') {
+    if ($page.url.pathname.startsWith('/read')) {
       goto('/');
-    } else if ($page.url.pathname === '/write') {
+    } else if ($page.url.pathname.startsWith('/write')) {
       // 쓰기 로직 추가
       goto('/');
-    } else if ($page.url.pathname === '/edit') {
+    } else if ($page.url.pathname.startsWith('/edit')) {
       // 수정 로직 추가
       goto('/');
     }
@@ -19,12 +19,13 @@
 
 <header>
   <h1>Diary {$page.url.pathname}</h1>
-  {#if $page.url.pathname === '/read'}
-    <button class='btn' on:click={() => goto('/')}>완료</button>
-  {:else if $page.url.pathname === '/write' } 
-    <button class='btn' on:click={() => goto('/')}>완료</button>
-  {:else if $page.url.pathname === '/edit' } 
-    <button class='btn' on:click={() => goto('/')}>완료</button>
+  <!-- 페이지에 따라 버튼 보여주는 로직 -->
+  {#if $page.url.pathname.startsWith('/read')}
+    <button class='btn' on:click={clickHandler}>완료</button>
+  {:else if $page.url.pathname.startsWith('/write') } 
+    <button class='btn' on:click={clickHandler}>완료</button>
+  {:else if $page.url.pathname.startsWith('/edit') } 
+    <button class='btn' on:click={clickHandler}>완료</button>
   {/if}
 </header>
 <nav>
