@@ -1,35 +1,47 @@
 <script>
-  import TextAreaAutoSize from '$lib/components/TextAreaAutoSize.svelte';
+  import TextAreaAutoSize from '$lib/components/TextAreaAutoSize.svelte'; //
   import { diaries } from '$lib/store/store';
 
-  let val = '';
+  let val = ''; // textarea의 값을 저장할 변수
+
+  // 한글로 포매팅 하여 시간을 표시합니다.
+  const formatDate = function() {
+    return new Date().toLocaleDateString('ko-KR', {
+      year: 'numeric',
+      month: 'long',  // 'numeric' or 'long'
+      day: 'numeric',
+      weekday: 'long'
+    })
+  }
 </script>
 
 <main>
   <div class="diary">
-    <TextAreaAutoSize
+    <!-- <textarea
+      placeholder="글쓰기를 시작하세요..."
+    ></textarea> -->
+    <TextAreaAutoSize 
       bind:value={val}
+      minRows={2}
+      maxRows={40}
     ></TextAreaAutoSize>
     <div class="bottom-info">
-      <span 
-        class="date">
-          { 
-            new Date().toLocaleDateString('ko-KR', {
-              year: 'numeric',
-              month: 'long',  // 'numeric' or 'long'
-              day: 'numeric',
-              weekday: 'long'
-            })
-          }
-        </span>
+      <span class="date">{ formatDate() }</span>
     </div>
   </div>
 </main>
 
 <style lang='scss'>
   main { 
-    padding: 20px;
-    .diary { cursor: auto; }
-    .bottom-info { margin-top: 30px; }
+    padding: 35px 20px;
   }
+
+  // textarea {
+  //   border: none;
+  //   width: 100%;
+  //   font-size: inherit;
+  //   padding: 0.5rem 0;
+  //   background: transparent;
+  //   outline: none;
+  // }
 </style>
