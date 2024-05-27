@@ -7,8 +7,10 @@
 
 <main class="container">
   {#each $diaries as diary}
-    <a class="diary" href={`/read/${diary.id}`}>
-      <p class="content">{diary.content}</p>
+    <div class="diary">
+      <a href={`/read/${diary.id}`}>
+        <p class="content">{diary.content}</p>
+      </a>
       <div class="bottom-info">
         <span class="date">{diary.date}</span>
         <div class="btns">
@@ -20,7 +22,7 @@
           </button>
         </div>
       </div>
-    </a>
+    </div>
   {/each}
 </main>
 

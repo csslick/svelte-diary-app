@@ -56,7 +56,5 @@ a { color: inherit; }
 }
 
 .diary {
-  cursor: pointer;
-  display: block;
-  text-decoration: none;
+  a { text-decoration: none;}
 }
