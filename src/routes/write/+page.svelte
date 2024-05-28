@@ -4,9 +4,10 @@
   import TextAreaAutoSize from '$lib/components/TextAreaAutoSize.svelte'; //
 
   let val = ''; // textarea의 값을 저장할 변수
-  $: $writing = val; // 입력중인 글 임시 저장
-   
- 
+  $: {
+    $writing = val; // 입력중인 글 임시 저장
+    console.log($writing);
+  }
 
   // 한글로 포매팅 하여 시간을 표시합니다.
   // const formatDate = function() {
