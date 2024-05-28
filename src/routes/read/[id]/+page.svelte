@@ -9,22 +9,25 @@
   const { content, date } = diary;
 </script>
 
-<h1>보기 {id}</h1>
-<div class="diary">
-  <p class="content">{content}</p>
-  <div class="bottom-info">
-    <span class="date">{date}</span>
-    <div class="btns">
-      <button class="btn" on:click={() => goto(`/edit/${id}`)}>
-        <Icon icon="icon-park-outline:write" width="24" height="24"  style="color: #444;"/>
-      </button>
-      <button class="btn">
-        <Icon icon="ic:baseline-delete" width="24" height="24"  style="color: #f80;" />
-      </button>
+<main>
+  <h1>보기 {id}</h1>
+  <div class="diary">
+    <p class="content">{content}</p>
+    <div class="bottom-info">
+      <span class="date">{date}</span>
+      <div class="btns">
+        <button class="btn" on:click={() => goto(`/edit/${id}`)}>
+          <Icon icon="icon-park-outline:write" width="24" height="24"  style="color: #444;"/>
+        </button>
+        <button class="btn">
+          <Icon icon="ic:baseline-delete" width="24" height="24"  style="color: #f80;" />
+        </button>
+      </div>
     </div>
   </div>
-</div>
+</main>
 
 <style>
   .diary { cursor: auto; }
+  .content { white-space: pre-wrap; }
 </style>
