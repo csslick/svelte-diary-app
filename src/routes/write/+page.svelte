@@ -1,18 +1,22 @@
 <script>
+  import formatDate from '$lib/utils/formatDate.js';
+  import { writing, diaries } from '$lib/store/store.js';
   import TextAreaAutoSize from '$lib/components/TextAreaAutoSize.svelte'; //
-  import { diaries } from '$lib/store/store';
 
   let val = ''; // textarea의 값을 저장할 변수
+  $: $writing = val; // 입력중인 글 임시 저장
+   
+ 
 
   // 한글로 포매팅 하여 시간을 표시합니다.
-  const formatDate = function() {
-    return new Date().toLocaleDateString('ko-KR', {
-      year: 'numeric',
-      month: 'long',  // 'numeric' or 'long'
-      day: 'numeric',
-      weekday: 'long'
-    })
-  }
+  // const formatDate = function() {
+  //   return new Date().toLocaleDateString('ko-KR', {
+  //     year: 'numeric',
+  //     month: 'long',  // 'numeric' or 'long'
+  //     day: 'numeric',
+  //     weekday: 'long'
+  //   })
+  // }
 </script>
 
 <main>

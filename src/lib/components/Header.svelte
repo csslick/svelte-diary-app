@@ -1,4 +1,5 @@
 <script>
+  import { writing, addDiary } from '$lib/store/store.js'; // 글쓰기 모듈
   import { page } from '$app/stores';
   import { goto } from '$app/navigation';
 
@@ -9,6 +10,9 @@
       goto('/');
     } else if ($page.url.pathname.startsWith('/write')) {
       // 쓰기 로직 추가
+      if ($writing.length > 0) {
+        addDiary();
+      }
       goto('/');
     } else if ($page.url.pathname.startsWith('/edit')) {
       // 수정 로직 추가
