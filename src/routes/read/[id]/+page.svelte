@@ -29,5 +29,4 @@
 
 <style>
   .diary { cursor: auto; }
-  .content { white-space: pre-wrap; }
 </style>

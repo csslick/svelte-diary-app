@@ -1,11 +1,12 @@
 <script>
-  import { writing, addDiary } from '$lib/store/store.js'; // 글쓰기 모듈
+  import { writing, addDiary, editDiary, editId } from '$lib/store/store.js'; // 글쓰기 모듈
   import { page } from '$app/stores';
   import { goto } from '$app/navigation';
 
   $: console.log('page', $page.url.pathname);
 
   function clickHandler() {
+    console.log('editId', $editId);
     if ($page.url.pathname.startsWith('/read')) {
       goto('/');
     } else if ($page.url.pathname.startsWith('/write')) {
@@ -16,6 +17,9 @@
       goto('/');
     } else if ($page.url.pathname.startsWith('/edit')) {
       // 수정 로직 추가
+      if ($writing.length > 0) {
+        editDiary($editId);
+      }
       goto('/');
     }
   }
