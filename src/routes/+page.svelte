@@ -5,10 +5,11 @@
   import { diaries } from '$lib/store/store';
   // import { goto } from '$app/navigation'; // 페이지 이동 모듈
   console.log($diaries)
+  export let data;
 </script>
 
 <main class="container">
-  {#each $diaries as diary}
+  {#each data.posts as diary}
     <div class="diary">
       <a href={`/read/${diary.id}`}>
         <p class="content">{diary.content}</p>
