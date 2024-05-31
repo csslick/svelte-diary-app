@@ -1,4 +1,6 @@
 <script>
+  import Btns from '$lib/components/Btns.svelte';
+  // import Icon from '@iconify/svelte';
   import { page } from '$app/stores'; // 페이지 정보를 가져올 모듈
   import { writing, diaries, editId } from '$lib/store/store.js';
   import TextAreaAutoSize from '$lib/components/TextAreaAutoSize.svelte'; //
@@ -24,6 +26,7 @@
     ></TextAreaAutoSize>
     <div class="bottom-info">
       <span class="date">{ date }</span>
+      <Btns diary={editDiary} {id} />
     </div>
   </div>
 </main>

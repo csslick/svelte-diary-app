@@ -27,7 +27,7 @@ export const editDiary = (id) => {
 	diaries.update((current) => {
 		// id 가 일치하는 글을 찾아 수정한 글 업데이트
 		return current.map((diary) => {
-			if (diary.id.toString() === id) {
+			if (diary.id.toString() === id.toString()) {
 				return { ...diary, content: get(writing) };
 			} else {
 				return diary;
@@ -36,4 +36,12 @@ export const editDiary = (id) => {
 	});
 	writing.set('');
 	editId.set(0);
+}
+
+// 다이어리 삭제
+export const deleteDiary = (id) => {
+	diaries.update((current) => {
+		// id 가 일치하는 글을 찾아 삭제
+		return current.filter((diary) => diary.id.toString() !== id.toString());
+	});
 }
