@@ -1,4 +1,5 @@
 <script>
+  import formatDate from '$lib/utils/formatDate.js';
   import Btns from '$lib/components/Btns.svelte';
   import addIcon from '$lib/assets/icon_add.svg';
   // import Icon from '@iconify/svelte';
@@ -6,16 +7,18 @@
   // import { goto } from '$app/navigation'; // 페이지 이동 모듈
   console.log($diaries)
   export let data;
+  console.log(data.diaries)
 </script>
 
 <main class="container">
-  {#each data.posts as diary}
+  <!-- {#each data.posts as diary} -->
+  {#each data.diaries as diary}
     <div class="diary">
       <a href={`/read/${diary.id}`}>
         <p class="content">{diary.content}</p>
       </a>
       <div class="bottom-info">
-        <span class="date">{diary.date}</span>
+        <span class="date">{formatDate(diary.created_at)}</span>
         <Btns {diary} id='/'/>
         </div>
     </div>

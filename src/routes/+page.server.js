@@ -1,12 +1,9 @@
-import { error } from '@sveltejs/kit'
-import { posts } from '../lib/data/posts.js'
+import { supabase } from "$lib/supabaseClient";
 
-export function load({ params }) {
-  console.log('params: ', params);
-  
-  if (!posts) throw error(404, 'Not found');
-
+export async function load() {
+  const { data } = await supabase.from("diaries").select();
+  console.log('server: ', data)
   return {
-    posts
+    diaries: data ?? [],
   };
 }
