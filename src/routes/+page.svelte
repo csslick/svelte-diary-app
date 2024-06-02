@@ -4,13 +4,20 @@
   import { diaries } from '$lib/store/store';
   import { goto } from '$app/navigation'; // 페이지 이동 모듈
   console.log($diaries)
+
 </script>
 
 <main class="container">
   {#each $diaries as diary}
     <div class="diary">
       <a href={`/read/${diary.id}`}>
-        <p class="content">{diary.content}</p>
+        <p class="content">
+           <!-- 50자로 중략 표시 -->
+          { 
+            diary.content.length > 50 ? 
+              `${diary.content.slice(0, 50)}...` : diary.content
+          }
+        </p>
       </a>
       <div class="bottom-info">
         <span class="date">{diary.date}</span>
