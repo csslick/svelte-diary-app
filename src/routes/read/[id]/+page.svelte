@@ -1,4 +1,5 @@
 <script>
+  import formatDate from '$lib/utils/formatDate.js';
   import Btns from '$lib/components/Btns.svelte';
   // import Icon from '@iconify/svelte';
   // import { goto } from '$app/navigation'; // 페이지 이동 모듈
@@ -15,7 +16,7 @@
   <div class="diary">
     <p class="content">{content}</p>
     <div class="bottom-info">
-      <span class="date">{date}</span>
+      <span class="date">{formatDate(date)}</span>
       <Btns {diary} {id} />
     </div>
   </div>

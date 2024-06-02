@@ -5,14 +5,16 @@
   // import Icon from '@iconify/svelte';
   import { diaries } from '$lib/store/store';
   // import { goto } from '$app/navigation'; // 페이지 이동 모듈
-  console.log($diaries)
+  console.log('store 다이어리 초기값:', $diaries)
   export let data;
   console.log(data.diaries)
+  // 읽어온 db를 store에 저장
+  $diaries = data.diaries;
 </script>
 
 <main class="container">
   <!-- {#each data.posts as diary} -->
-  {#each data.diaries as diary}
+  {#each $diaries as diary}
     <div class="diary">
       <a href={`/read/${diary.id}`}>
         <p class="content">

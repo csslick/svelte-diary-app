@@ -1,4 +1,5 @@
 <script>
+  import formatDate from '$lib/utils/formatDate.js';
   import Btns from '$lib/components/Btns.svelte';
   // import Icon from '@iconify/svelte';
   import { page } from '$app/stores'; // 페이지 정보를 가져올 모듈
@@ -25,7 +26,7 @@
       maxRows={40}
     ></TextAreaAutoSize>
     <div class="bottom-info">
-      <span class="date">{ date }</span>
+      <span class="date">{ formatDate(date) }</span>
       <Btns diary={editDiary} {id} />
     </div>
   </div>
