@@ -16,7 +16,13 @@
           <Icon icon="icon-park-outline:write" width="24" height="24"  style="color: #444;"/>
         </button>
       {/if}
-      <button class="btn" on:click={() => {deleteDiary(diary.id); goto('/')}}>
+      <button 
+        class="btn" 
+        on:click={async () => {
+          await deleteDiary(diary.id); 
+          // goto('/');
+          location.reload();
+        }}>
         <Icon icon="ic:baseline-delete" width="24" height="24"  style="color: #f80;" />
       </button>
     </div>

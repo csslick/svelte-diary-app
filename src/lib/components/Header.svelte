@@ -5,23 +5,24 @@
 
   $: console.log('page', $page.url.pathname);
 
-  function clickHandler() {
+  async function clickHandler() {
     console.log('editId', $editId);
     if ($page.url.pathname.startsWith('/read')) {
       goto('/');
     } else if ($page.url.pathname.startsWith('/write')) {
       // 쓰기 로직 추가
       if ($writing.length > 0) {
-        addDiary();
+        await addDiary();
         goto('/'); // Home으로 이동해야 DB 업데이트 반영됨
+        // location.href = '/';
       }
       goto('/');
     } else if ($page.url.pathname.startsWith('/edit')) {
       // 수정 로직 추가
       if ($writing.length > 0) {
-        editDiary($editId);
+        await editDiary($editId);
+        goto('/');
       }
-      goto('/');
     }
   }
 </script>

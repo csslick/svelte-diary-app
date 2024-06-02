@@ -10,19 +10,18 @@ export const editId = writable(0); // 수정할 글의 id를 저장할 변수
 
 
 export async function addDiary() {
-	let content = get(writing); 
+	let content = get(writing);
 
-	if(content) {
+	if (content) {
 		const { error } = await supabase
 			.from('diaries')
-			.insert({ content })	
+			.insert({ content })
 
-		if(error) {
+		if (error) {
 			console.error(error);
 		} else {
 			console.log('저장 성공');
 		}
-
 		// writing.set('');
 	}
 }
@@ -44,7 +43,26 @@ export const addDiary = () => {
 }
 */
 
+export async function editDiary() {
+	let content = get(writing);
+	let id = get(editId);
+
+	if (content) {
+		const { error } = await supabase
+			.from('diaries')
+			.update({ content })
+			.eq('id', id)
+
+		if (error) {
+			console.error(error);
+		} else {
+			console.log('업데이트 성공');
+		}
+	}
+}
+
 // 다이어리 수정
+/* 
 export const editDiary = (id) => {
 	diaries.update((current) => {
 		// id 가 일치하는 글을 찾아 수정한 글 업데이트
@@ -59,11 +77,27 @@ export const editDiary = (id) => {
 	writing.set('');
 	editId.set(0);
 }
+*/
 
 // 다이어리 삭제
+export async function deleteDiary(id) {
+	const { error } = await supabase
+		.from('diaries')
+		.delete()
+		.eq('id', id)
+
+	if (error) {
+			console.error(error);
+		} else {
+			console.log('삭제 성공');
+	}
+}
+
+/*
 export const deleteDiary = (id) => {
 	diaries.update((current) => {
 		// id 가 일치하는 글을 찾아 삭제
 		return current.filter((diary) => diary.id.toString() !== id.toString());
 	});
 }
+*/
