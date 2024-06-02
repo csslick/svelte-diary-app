@@ -1,3 +1,4 @@
+import { supabase } from '$lib/supabaseClient';
 import { v4 as uuidv4 } from 'uuid';
 import formatDate from '$lib/utils/formatDate';
 import { writable, get } from 'svelte/store';
@@ -7,6 +8,26 @@ export const diaries = writable([]); // 일기 데이터를 저장하는 store �
 export const writing = writable(''); // 입력된 글을 임시 저장할 변수
 export const editId = writable(0); // 수정할 글의 id를 저장할 변수
 
+
+export async function addDiary() {
+	let content = get(writing); 
+
+	if(content) {
+		const { error } = await supabase
+			.from('diaries')
+			.insert({ content })	
+
+		if(error) {
+			console.error(error);
+		} else {
+			console.log('저장 성공');
+		}
+
+		// writing.set('');
+	}
+}
+
+/*
 export const addDiary = () => {
 	let content = get(writing); // 다른 store 변수 참조시 get을 사용하여 가져옴
 
@@ -21,6 +42,7 @@ export const addDiary = () => {
 		writing.set('');
 	}
 }
+*/
 
 // 다이어리 수정
 export const editDiary = (id) => {

@@ -13,6 +13,7 @@
       // 쓰기 로직 추가
       if ($writing.length > 0) {
         addDiary();
+        goto('/'); // Home으로 이동해야 DB 업데이트 반영됨
       }
       goto('/');
     } else if ($page.url.pathname.startsWith('/edit')) {
