@@ -38,12 +38,12 @@
     <button class='btn' on:click={clickHandler}>완료</button>
   {/if}
 </header>
-<nav>
+<!-- <nav>
   <a href="/">home</a>
   <a href="/read">read</a>
   <a href="/write">write</a>
   <a href="/edit">edit</a>
-</nav>
+</nav> -->
 
 <style lang='scss'>
   header {
